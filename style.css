@@ -1,1 +1,28 @@
-
+body {
+    margin: 0;
+    padding: 0;
+    background-color: black;
+  }
+  
+  .header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100px;
+  }
+  
+  .logo {
+    margin-right:10px;
+    font-size: 24px;
+    font-weight: bold;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: white;
+  }
+  
+  .popcorn-icon {
+    width: 30px;
+    height: 30px;
+    background-image: url('Popcorn.webp');
+    background-size: contain;
+  }
+  
