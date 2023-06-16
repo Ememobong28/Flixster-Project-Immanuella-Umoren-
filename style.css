@@ -61,18 +61,22 @@ body {
   
   /* Movie Title Styles */
 .movie-title {
-    width: 200px;
-    margin-top: 15px;
+    margin-top: 10px;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
     font-weight: bold;
+    font-size: 10pt;
     text-align: center;
+    font-family: "Montserrat", sans-serif;
   }
   
 .movie-votes{
     text-align: center;
     margin-top: 3px;
+    font-size: 10pt;
+    font-family: "Montserrat", sans-serif;
+    font-weight: bold;
 
   }
   /* Movie Poster Styles */
@@ -125,6 +129,7 @@ body {
   
 #searchBtn {
     margin-right: 10px;
+    font-family: "Oswald", sans-serif;
   }
 
 #searchBtn:hover {
@@ -156,6 +161,7 @@ body {
     color: white;
     margin-left: 20px;
     margin-bottom: 5px;
+    font-family: "Montserrat", sans-serif;
   }
 
 #load-more-movies-btn {
@@ -169,6 +175,7 @@ body {
     background-color: #4CAF50;
     color: #fff;
     font-size: 14px;
+    font-weight: bold;
     cursor: pointer;
     margin-bottom: 10px;
   }

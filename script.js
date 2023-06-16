@@ -33,7 +33,7 @@ const fetchData = async () => {
 
       const votes = document.createElement("p");
       votes.classList.add("movie-votes")
-      votes.textContent = `  ⭐️ ${movie.vote_average} `;
+      votes.textContent = `  ⭐️ ${movie.vote_average.toFixed(1)} `;
 
       movieCard.appendChild(img);
       movieCard.appendChild(title);
