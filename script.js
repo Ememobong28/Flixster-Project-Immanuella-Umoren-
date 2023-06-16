@@ -6,6 +6,9 @@ const loadMoreBtn = document.getElementById("load-more-movies-btn");
 const searchInput = document.getElementById("searchInput");
 const searchBtn = document.getElementById("searchBtn");
 const clearBtn = document.getElementById("close-search-btn");
+const modal = document.getElementById("modal");
+const modalContent = document.querySelector(".modal-content");
+
 
 let currentPage = 1;
 const API_KEY = "40667d0d347b9fc651121941b1e7d758";
@@ -51,10 +54,6 @@ const fetchData = async () => {
   }
 };
 
-const loadMoreMovies = () => {
-  currentPage++;
-  fetchData();
-};
 
 const searchMovies = async (event) => {
     event.preventDefault();
@@ -70,6 +69,10 @@ const searchMovies = async (event) => {
     url = `https://api.themoviedb.org/3/search/movie?api_key=40667d0d347b9fc651121941b1e7d758&query=${searchTerm}`;
     await fetchData();
 
+    if (currentPage < totalPages) {
+        loadMoreBtn.style.display = "block";
+      }
+
     console.log("yayyy working");
   };
   
@@ -77,6 +80,19 @@ const searchMovies = async (event) => {
     if (event.keyCode === 13) {
       searchMovies(event);
     }
+  };
+
+const loadMoreMovies = () => {
+    currentPage++;
+    if (searchInput.value.trim() === '') {
+      // Load more movies from the "now_playing" category
+      url = `https://api.themoviedb.org/3/movie/now_playing?api_key=${API_KEY}&page=${currentPage}`;
+    } else {
+      // Load more movies related to the search
+      url = `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&query=${searchInput.value.trim()}&page=${currentPage}`;
+    }
+  
+    fetchData();
   };
 
 const clearResults = () => {
@@ -87,6 +103,21 @@ const clearResults = () => {
 
   searchInput.value = "";
 };
+
+/*Pop up video*/
+const fetchMovieDetails = async (movieId) => {
+  const apiKey = "YOUR_API_KEY";
+  const detailsUrl = `https://api.themoviedb.org/3/movie/${movieId}?api_key=${apiKey}`;
+  try {
+    const response = await fetch(detailsUrl);
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.log(error);
+    return null;
+  }
+};
+
 
 loadMoreBtn.addEventListener("click", loadMoreMovies);
 searchBtn.addEventListener("click", searchMovies);
