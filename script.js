@@ -1,5 +1,3 @@
-
-
 const movieGrid = document.getElementById("movies-grid");
 const moviesContainer = document.getElementById("movies-container");
 const loadMoreBtn = document.getElementById("load-more-movies-btn");
@@ -42,6 +40,10 @@ const fetchData = async () => {
       movieCard.appendChild(title);
       movieCard.appendChild(votes);
       movieGrid.appendChild(movieCard);
+
+      movieCard.addEventListener("click", () => {
+        showMovieDetails(movie);
+      })
     });
 
     if (data.page < data.total_pages) {
@@ -104,21 +106,6 @@ const clearResults = () => {
   searchInput.value = "";
 };
 
-/*Pop up video*/
-const fetchMovieDetails = async (movieId) => {
-  const apiKey = "YOUR_API_KEY";
-  const detailsUrl = `https://api.themoviedb.org/3/movie/${movieId}?api_key=${apiKey}`;
-  try {
-    const response = await fetch(detailsUrl);
-    const data = await response.json();
-    return data;
-  } catch (error) {
-    console.log(error);
-    return null;
-  }
-};
-
-
 loadMoreBtn.addEventListener("click", loadMoreMovies);
 searchBtn.addEventListener("click", searchMovies);
 searchInput.addEventListener("keydown", handleSearch);
@@ -130,5 +117,9 @@ window.addEventListener("load", (event) => {
 });
 
 
+function showMovieDetails(movie){
+  const message = `Title: ${movie.title}\n\nOveriew: ${movie.overview}`;
+  alert(message);
+}
 
 //https://api.themoviedb.org/3/movie/now_playing?api_key=40667d0d347b9fc651121941b1e7d758&q="movies"`;
