@@ -31,6 +31,11 @@ body {
 
 /* Movie Card Styles */
 
+#movie-container{
+    display: flex;
+    justify-content: center;
+
+}
 .movie-card {
     width: 175px; 
     border-radius: 8px;
@@ -50,8 +55,7 @@ body {
     /*display: grid;*/
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     grid-gap: 20px;
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
     justify-content: center;
   }
   
@@ -129,7 +133,7 @@ body {
 .search-tab {
     position: relative;
   }
-  
+
 #close-search-btn {
     position: absolute;
     top: 50%;
@@ -173,6 +177,34 @@ body {
     background-color: #45a049;
   }
 
+  @media screen and (max-width: 768px) {
+    .movies-grid {
+      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+      grid-gap: 15px;
+    }
+  
+    .movie-card {
+      width: 150px;
+    }
+    #load-more-movies-btn {
+      width: 150px;
+    }
+  }
+  
+  @media screen and (max-width: 480px) {
+    .movies-grid {
+      grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+      grid-gap: 10px;
+    }
+  
+    .movie-card {
+      width: 120px;
+    }
+  
+    #load-more-movies-btn {
+      width: 120px;
+    }
+  }
 
   
   
