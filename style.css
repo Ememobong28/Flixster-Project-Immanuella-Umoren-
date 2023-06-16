@@ -47,8 +47,13 @@ body {
     align-items: top;
     position: relative;
     background-color: transparent;
-    
+    transition: transform 0.3s, box-shadow 0.3s, opacity 0.3s;
   } 
+
+.movie-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  }
   
 .movies-grid {
     /*display: grid;*/
@@ -68,6 +73,7 @@ body {
     font-size: 10pt;
     text-align: center;
     font-family: "Montserrat", sans-serif;
+    cursor: pointer;
   }
   
 .movie-votes{
@@ -178,6 +184,7 @@ body {
     font-weight: bold;
     cursor: pointer;
     margin-bottom: 10px;
+    transition: background-color 0.3s;
   }
   
 #load-more-movies-btn:hover {
