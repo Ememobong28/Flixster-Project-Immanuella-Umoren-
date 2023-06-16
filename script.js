@@ -1,0 +1,93 @@
+
+
+const movieGrid = document.getElementById("movie-grid");
+const moviesContainer = document.getElementById("movies-container");
+const loadMoreBtn = document.getElementById("loadMoreBtn");
+const searchInput = document.getElementById("searchInput");
+const searchBtn = document.getElementById("searchBtn");
+const clearBtn = document.getElementById("clearBtn");
+
+let currentPage = 1;
+const API_KEY = "40667d0d347b9fc651121941b1e7d758";
+let url = `https://api.themoviedb.org/3/movie/now_playing?api_key=${API_KEY}&page=${currentPage}`;
+
+const fetchData = async () => {
+  try {
+    const response = await fetch(`${url}`);
+    const data = await response.json();
+    const movies = data.results;
+
+    movies.forEach((movie) => {
+      const movieCard = document.createElement("div");
+      movieCard.classList.add("movie-card");
+
+      const img = document.createElement("img");
+      img.classList.add("movie-poster");
+      img.src = `https://image.tmdb.org/t/p/w500/${movie.poster_path}`;
+      img.alt = movie.title;
+
+      const title = document.createElement("div");
+      title.classList.add("movie-title")
+      title.textContent = movie.title;
+
+      const votes = document.createElement("p");
+      votes.textContent = `  ⭐️ ${movie.vote_average} `;
+
+      movieCard.appendChild(img);
+      movieCard.appendChild(title);
+      movieCard.appendChild(votes);
+      movieGrid.appendChild(movieCard);
+    });
+
+    if (data.page < data.total_pages) {
+      loadMoreBtn.style.display = "block";
+    } else {
+      loadMoreBtn.style.display = "none";
+    }
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+const loadMoreMovies = () => {
+  currentPage++;
+  fetchData();
+};
+
+const searchMovies = async (event) => {
+    event.preventDefault();
+  
+    const searchTerm = searchInput.value.trim();
+  
+    if (searchTerm === '') {
+      return;
+    }
+  
+    movieGrid.innerHTML = '';
+    currentPage = 1;
+    url = `https://api.themoviedb.org/3/search/movie?api_key=40667d0d347b9fc651121941b1e7d758&query=${searchTerm}`;
+    await fetchData();
+    
+    console.log("yayyy working");
+  };
+  
+
+const clearResults = () => {
+  movieGrid.innerHTML = "";
+  currentPage = 1;
+  url = `https://api.themoviedb.org/3/movie/now_playing?api_key=${API_KEY}&page=${currentPage}`;
+  fetchData();
+
+  searchInput.value = "";
+};
+
+loadMoreBtn.addEventListener("click", loadMoreMovies);
+searchBtn.addEventListener("click", searchMovies);
+clearBtn.addEventListener("click", clearResults);
+
+window.addEventListener("load", (event) => {
+  event.preventDefault();
+  fetchData();
+});
+
+//https://api.themoviedb.org/3/movie/now_playing?api_key=40667d0d347b9fc651121941b1e7d758&q="movies"`;

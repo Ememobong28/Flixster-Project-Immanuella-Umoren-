@@ -1,16 +1,34 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <title>Document</title>
 </head>
+
 <body>
-    <div class = "header">
-       <div class="logo">Flixster</div>
-       <div class="popcorn-icon"></div>  
+    <div class="header">
+        <div class="logo">Flixster</div>
+        <div class="popcorn-icon"></div>
     </div>
+      
+      <div class="search-container">
+        <input type="text" id="searchInput" placeholder="Search movies">
+        <button id="searchBtn">Search</button>
+        <button id="clearBtn">Clear Results</button>
+      </div>
+ 
+      <div id ="now-playing"> Now Playing</div>
+      <div id="movies-container"> </div>
+      <div id="movie-grid"></div>
+
+      <button id="loadMoreBtn">Load More</button>
     <script src="script.js"></script>
+
 </body>
+
 </html>
