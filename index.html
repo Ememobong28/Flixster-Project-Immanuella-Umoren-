@@ -17,16 +17,23 @@
     </div>
       
       <div class="search-container">
+        <div class= "search-tab">
         <input type="text" id="searchInput" placeholder="Search movies">
         <button id="searchBtn">Search</button>
-        <button id="clearBtn">Clear Results</button>
+        <button id="close-search-btn" onclick="clearResults()">
+            <span class="close-icon">&times;</span>
       </div>
+      <div id = "searchsuggestions"></div>
+    </div>
  
       <div id ="now-playing"> Now Playing</div>
-      <div id="movies-container"> </div>
-      <div id="movie-grid"></div>
+      <div id="movies-container">
+      <div id="movies-grid"></div>
+      </div>
 
-      <button id="loadMoreBtn">Load More</button>
+
+    <button id="load-more-movies-btn">Load More Videos</button>
+
     <script src="script.js"></script>
 
 </body>

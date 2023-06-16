@@ -1,11 +1,11 @@
 
 
-const movieGrid = document.getElementById("movie-grid");
+const movieGrid = document.getElementById("movies-grid");
 const moviesContainer = document.getElementById("movies-container");
-const loadMoreBtn = document.getElementById("loadMoreBtn");
+const loadMoreBtn = document.getElementById("load-more-movies-btn");
 const searchInput = document.getElementById("searchInput");
 const searchBtn = document.getElementById("searchBtn");
-const clearBtn = document.getElementById("clearBtn");
+const clearBtn = document.getElementById("close-search-btn");
 
 let currentPage = 1;
 const API_KEY = "40667d0d347b9fc651121941b1e7d758";
@@ -29,8 +29,10 @@ const fetchData = async () => {
       const title = document.createElement("div");
       title.classList.add("movie-title")
       title.textContent = movie.title;
+      title.setAttribute("title",movie.title)
 
       const votes = document.createElement("p");
+      votes.classList.add("movie-votes")
       votes.textContent = `  ⭐️ ${movie.vote_average} `;
 
       movieCard.appendChild(img);
@@ -67,10 +69,15 @@ const searchMovies = async (event) => {
     currentPage = 1;
     url = `https://api.themoviedb.org/3/search/movie?api_key=40667d0d347b9fc651121941b1e7d758&query=${searchTerm}`;
     await fetchData();
-    
+
     console.log("yayyy working");
   };
   
+  const handleSearch = async (event) => {
+    if (event.keyCode === 13) {
+      searchMovies(event);
+    }
+  };
 
 const clearResults = () => {
   movieGrid.innerHTML = "";
@@ -83,11 +90,14 @@ const clearResults = () => {
 
 loadMoreBtn.addEventListener("click", loadMoreMovies);
 searchBtn.addEventListener("click", searchMovies);
+searchInput.addEventListener("keydown", handleSearch);
 clearBtn.addEventListener("click", clearResults);
 
 window.addEventListener("load", (event) => {
   event.preventDefault();
   fetchData();
 });
+
+
 
 //https://api.themoviedb.org/3/movie/now_playing?api_key=40667d0d347b9fc651121941b1e7d758&q="movies"`;

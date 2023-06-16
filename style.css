@@ -1,5 +1,4 @@
 
-
 body {
     margin: 0;
     padding: 0;
@@ -7,14 +6,15 @@ body {
     color: white;
   }
   
-  .header {
+.header {
     display: flex;
     align-items: center;
     justify-content: center;
     height: 100px;
+    width: 100%;
   }
   
-  .logo {
+.logo {
     margin-right:10px;
     font-size: 24px;
     font-weight: bold;
@@ -22,7 +22,7 @@ body {
     color: white;
   }
   
-  .popcorn-icon {
+.popcorn-icon {
     width: 30px;
     height: 30px;
     background-image: url('Popcorn.webp');
@@ -30,13 +30,14 @@ body {
   }
 
 /* Movie Card Styles */
+
 .movie-card {
-    width: 200px; 
+    width: 175px; 
     border-radius: 8px;
     overflow: hidden;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     display: inline-block;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     margin-top: 10px;
     margin-left: 20px;
     margin-right: 20px;
@@ -45,50 +46,61 @@ body {
   } 
   
   /* Movie Grid Styles */
-  .movie-grid {
+.movies-grid {
     /*display: grid;*/
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     grid-gap: 20px;
     display: flex;
     flex-wrap: wrap;
-    justify-content: flex-start;
+    justify-content: center;
   }
   
   /* Movie Title Styles */
-  .movie-title {
+.movie-title {
     width: 200px;
     margin-top: 15px;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
     font-weight: bold;
-
+    text-align: center;
   }
   
+.movie-votes{
+    text-align: center;
+    margin-top: 3px;
+
+  }
   /* Movie Poster Styles */
-   .movie-poster {
+.movie-poster {
     width: 100%;
     height:100%;
     object-fit: cover;
     transition: transform 0.3s;
   }
 
-  .movie-card:hover .movie-poster {
+.movie-card {
+    /* Existing styles for the movie card */
+    position: relative;
+    z-index: 1;
+  }
+
+.movie-card:hover .movie-poster {
     transform: scale(1.1);
   }
   
-  .movie-card:hover .movie-title {
+.movie-card:hover .movie-title {
     opacity: 1;
   }
 
-  .search-container {
+.search-container {
     display: flex;
     align-items: center;
     justify-content: center;
     margin-bottom: 20px;
   }
   
-  #searchInput {
+#searchInput {
     padding: 10px;
     width: 200px;
     border: none;
@@ -96,8 +108,8 @@ body {
     font-size: 16px;
   }
   
-  #searchBtn,
-  #clearBtn {
+#searchBtn,
+#close-search-btn {
     padding: 10px 20px;
     border: none;
     border-radius: 0 5px 5px 0;
@@ -107,27 +119,60 @@ body {
     cursor: pointer;
   }
   
-  #searchBtn {
+#searchBtn {
     margin-right: 10px;
   }
+
+#searchBtn:hover {
+    background-color: #45a049;
+}
+.search-tab {
+    position: relative;
+  }
   
-  #clearBtn {
-    background-color: #f44336;
+#close-search-btn {
+    position: absolute;
+    top: 50%;
+    right: 100px;
+    transform: translateY(-50%);
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .close-icon {
+    font-size: 20px;
+    color: red;
+    line-height: 1;
   }
 
-  #now-playing {
+#now-playing {
     font-size: 20px;
     font-weight: bold;
     color: white;
     margin-left: 20px;
     margin-bottom: 5px;
   }
-  
 
+#load-more-movies-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    background-color: #4CAF50;
+    color: #fff;
+    font-size: 14px;
+    cursor: pointer;
+    margin-bottom: 10px;
+  }
   
-  
-  
-  
- 
+#load-more-movies-btn:hover {
+    background-color: #45a049;
+  }
+
+
   
   
