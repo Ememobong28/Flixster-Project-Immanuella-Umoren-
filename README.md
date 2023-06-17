@@ -40,7 +40,10 @@ Deployed Application (optional): [Flixster Deployed Site](https://ememobong28.gi
 
 ### Walkthrough Video
 
-`ADD_EMBEDDED_CODE_HERE`
+`<a href="https://www.loom.com/share/819ea6387e7b49ecb16a892f5da7d08c?sid=ca933d1a-dd71-4250-b639-bb16406a1d84">
+   <p>Flixster</p>
+   <img style="max-width:300px;" src="https://www.loom.com/embed/819ea6387e7b49ecb16a892f5da7d08c?sid=d75a6126-eac4-4659-912c-b8377049a1b4">
+</a>`
 
 ### Reflection
 
